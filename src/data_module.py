@@ -66,7 +66,8 @@ class MyDataModule(pl.LightningDataModule):
         Returns:
             (torch.utils.data.DataLoader): Train Dataloader
         """
-        return DataLoader(self.train_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn)
+        return DataLoader(self.train_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn,
+                          num_workers=self.hparams.num_workers, pin_memory=True)
 
     def val_dataloader(self):
         r"""
@@ -76,7 +77,8 @@ class MyDataModule(pl.LightningDataModule):
             (torch.utils.data.DataLoader): Validation Dataloader
         """
         
-        return DataLoader(self.val_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn)
+        return DataLoader(self.val_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn,
+                          num_workers=self.hparams.num_workers, pin_memory=True)
 
     def test_dataloader(self):
         r"""
@@ -85,4 +87,5 @@ class MyDataModule(pl.LightningDataModule):
         Returns:
             (torch.utils.data.DataLoader): Test Dataloader
         """
-        return DataLoader(self.test_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn)
+        return DataLoader(self.test_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn,
+                          num_workers=self.hparams.num_workers, pin_memory=True)

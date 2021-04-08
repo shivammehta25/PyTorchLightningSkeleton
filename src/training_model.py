@@ -1,4 +1,6 @@
 r"""
+training_model.py 
+
 This file contains PyTorch Lightning's main module where code of the main model is implemented
 """
 import torch
@@ -10,7 +12,7 @@ from argparse import Namespace
 
 from src.model.MainModel import MainModel
 
-class MyModel(pl.LightningModule):
+class MyTrainingModule(pl.LightningModule):
     
     def __init__(self, hparams):
         super().__init__()
