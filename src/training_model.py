@@ -1,4 +1,4 @@
-"""
+r"""
 This file contains PyTorch Lightning's main module where code of the main model is implemented
 """
 import torch
@@ -26,16 +26,30 @@ class MyModel(pl.LightningModule):
         self.loss = nn.CrossEntropyLoss()
         
     def forward(self, x):
+        r"""
+        Forward pass of the model
+
+        Args:
+            x (Any): input to the forward function
+
+        Returns:
+            output (Any): output of the forward function
+        """
         output = self.model(x)
         return output
     
     def configure_optimizers(self):
-        # TODO: Change to your custom optimizer
+        r"""
+        Configure optimizer
+
+        Returns:
+            (torch.optim.Optimizer) 
+        """
         return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate,
                                 weight_decay=self.hparams.weight_decay)
     
     def training_step(self, train_batch, batch_idx):
-        """
+        r"""
         Main training loop of your model
 
         Args:
@@ -52,7 +66,7 @@ class MyModel(pl.LightningModule):
         return loss
 
     def on_train_batch_end(self, outputs, batch, batch_idx, dataloader_idx):
-        """
+        r"""
         Called when the train batch ends
         
         TODO: If you want to do something after your batch iteration
@@ -66,7 +80,7 @@ class MyModel(pl.LightningModule):
         pass
 
     def validation_step(self, val_batch, batch_idx):
-        """
+        r"""
         Validation step
 
         Args:
@@ -80,7 +94,7 @@ class MyModel(pl.LightningModule):
         return loss
     
     def validation_epoch_end(self, outputs):
-        """This is called once the validation epoch is finished
+        r"""This is called once the validation epoch is finished
 
         Args:
             outputs (List[Any]): list of return from the validation step
