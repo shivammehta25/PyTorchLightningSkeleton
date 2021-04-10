@@ -6,7 +6,7 @@ Contains PyTorch-Lightning's datamodule and dataloaders
 import torch
 from torch.utils.data import DataLoader
 import pytorch_lightning as pl
-from src.utilities.data_utils import CustomCollate
+from src.utilities.data_utils import CustomCollate, CustomDataset
 
 
 class MyDataModule(pl.LightningDataModule):
@@ -55,9 +55,9 @@ class MyDataModule(pl.LightningDataModule):
         
         raise NotImplementedError("Add your dataloaders first and remove this line")
         
-        self.train_data = torch.utils.data.Dataset()
-        self.val_data = torch.utils.data.Dataset()
-        self.test_data = torch.utils.data.Dataset()
+        self.train_data = CustomDataset()
+        self.val_data = CustomDataset()
+        self.test_data = CustomDataset()
 
     def train_dataloader(self):
         r"""
