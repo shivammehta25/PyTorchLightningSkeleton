@@ -16,7 +16,7 @@ class CustomCollate:
         super(CustomCollate, self).__init__()
         
     
-    def __class__(self, batch):
+    def __call__(self, batch):
         r"""
         Make changes to the batch of input, useful for tokenizing/padding on the fly
 
