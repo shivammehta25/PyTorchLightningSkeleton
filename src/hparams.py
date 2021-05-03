@@ -25,6 +25,7 @@ def create_hparams():
         val_after_n_steps=100,
         # Can also have string "1,2,3" or list [1,2,3]
         gpus=-1,
+        run_tests=True,
         
         
         ################################

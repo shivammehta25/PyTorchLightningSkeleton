@@ -15,6 +15,7 @@ from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 from src.hparams import create_hparams
 from src.data_module import MyDataModule
 from src.training_model import MyTrainingModule
+from run_tests import run_tests
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -27,10 +28,16 @@ if __name__ == '__main__':
 
     hparams = create_hparams()
 
+    if hparams.run_tests:
+        run_tests()
+
+    
     seed_everything(hparams.seed)
 
     data_module = MyDataModule(hparams)
     model = MyTrainingModule(hparams)
+    
+    
     
     
     ## TODO: Uncomment to only load the model parameters
@@ -39,7 +46,7 @@ if __name__ == '__main__':
     # Callbacks
     checkpoint_callback = ModelCheckpoint(monitor='val_loss',
                                           dirpath=hparams.checkpoint_path,
-                                          filename=f"{hparams.run_name}-" + '{epoch}-{step}-{ver}-{val_loss:.2f}',
+                                          filename='{}-{}-{}-{}-{:.2f}'.format(hparams.run_name, epoch, step, ver, val_loss),
                                           verbose=True,
                                           every_n_val_epochs=1)
 
