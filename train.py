@@ -46,7 +46,7 @@ if __name__ == '__main__':
     logger = TensorBoardLogger('tb_logs', name=hparams.run_name)
 
     trainer = pl.Trainer(resume_from_checkpoint=args.checkpoint_path,
-                         default_root_dir="checkpoints",
+                         default_root_dir=os.path.join("checkpoints", hparams.run_name),
                          gpus=hparams.gpus,
                          logger=logger,
                          log_every_n_steps=1,
