@@ -18,7 +18,7 @@ class MyDataModule(pl.LightningDataModule):
             hparams (argparse.Namespace)
         """
         super().__init__()
-        self.hparams = hparams
+        self.hparams.update(vars(hparams))
         self.collate_fn = CustomCollate()
 
     def prepare_data(self):
@@ -32,7 +32,7 @@ class MyDataModule(pl.LightningDataModule):
     def setup(self, stage=None):
         r"""
         Set train, val and test dataset here
-        
+
         Args:
             stage (string, optional): fit, test based on plt.Trainer state. 
                                     Defaults to None.
@@ -52,9 +52,10 @@ class MyDataModule(pl.LightningDataModule):
 
         #     # Optionally...
         #     # self.dims = tuple(self.mnist_test[0][0].shape)
-        
-        raise NotImplementedError("Add your dataloaders first and remove this line")
-        
+
+        raise NotImplementedError(
+            "Add your dataloaders first and remove this line")
+
         self.train_data = CustomDataset()
         self.val_data = CustomDataset()
         self.test_data = CustomDataset()
@@ -76,7 +77,7 @@ class MyDataModule(pl.LightningDataModule):
         Returns:
             (torch.utils.data.DataLoader): Validation Dataloader
         """
-        
+
         return DataLoader(self.val_data, batch_size=self.hparams.batch_size, collate_fn=self.collate_fn,
                           num_workers=self.hparams.num_workers, pin_memory=True)
 
