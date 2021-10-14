@@ -8,19 +8,7 @@
 		}
 	},
 	"extensions": [
-		"ms-python.python",
-		"bierner.markdown-preview-github-styles",
-		"eamodio.gitlens",
-		"GitHub.copilot",
-		"Gruntfuggly.todo-tree",
-		"KevinRose.vsc-python-indent",
-		"ms-toolsai.jupyter",
-		"njpwerner.autodocstring",
-		"RSIP-Vision.nvidia-smi-plus",
-		"ms-vsliveshare.vsliveshare",
-		"ms-vsliveshare.vsliveshare-audio",
-		"sukumo28.wav-preview",
-		"tomoki1207.pdf"
+		"ms-python.python"
 	],
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
 	"workspaceFolder": "/workspace",

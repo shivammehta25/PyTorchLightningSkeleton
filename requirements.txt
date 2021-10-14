@@ -1,3 +1,2 @@
 torch==1.9.0
-numpy==1.21.2
 pytorch-lightning==1.4.9
