@@ -38,8 +38,6 @@ if __name__ == '__main__':
 
     checkpoint_callback = ModelCheckpoint(monitor='val_loss',
                                           dirpath=hparams.checkpoint_path,
-                                          filename='{}-{epoch}-{step}-{val_loss}-{:.2f}'.format(
-                                              hparams.run_name),
                                           verbose=True,
                                           every_n_val_epochs=1)
 
